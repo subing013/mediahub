@@ -7,17 +7,36 @@
 <meta name="description" content="언론사가 직접 쓴 기사를 250여 개 제휴 언론사에 동시 송출합니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
+@font-face{font-family:'Paperlogy';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Paperlogy';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap}
+/* Figma: section titles (Paperlogy ExtraBold 60 / 1.3 / -2.34px) */
+.ttl{margin:0;font-family:'Paperlogy',Pretendard,'Noto Sans KR',sans-serif;font-weight:800;font-size:clamp(34px,5vw,60px);line-height:1.3;letter-spacing:-0.039em;color:#222222}
+.ttl-m{font-size:clamp(30px,4.2vw,50px)}
+.eyebrow{margin:0;font-size:20px;font-weight:700;line-height:32px;color:#F74130}
+.lead{margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:#555555}
+.emph{position:relative}
+.emph::before{content:"";position:absolute;left:50%;top:-0.4em;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#F74130}
+@media (max-width:768px){
+  #page>section:not(#top){padding-top:96px!important;padding-bottom:96px!important}
+  #top{min-height:720px!important}
+  #top .hero-inner{padding-top:150px!important}
+}
+@media (max-width:520px){
+  .hero-vis{margin-right:0!important;flex:1 1 100%!important;min-width:0}
+  .hero-vis>div{flex:0 0 auto;transform:scale(.74);transform-origin:top center;margin-bottom:-84px}
+}
 body{margin:0;background:#ffffff}
-a{color:#C2381F}a:hover{color:#9C2A15}
+a{color:#F74130}a:hover{color:#9C2A15}
 input,textarea,button{font-family:inherit}
 html{scroll-behavior:smooth}
 
 /* ---------- keyframes ---------- */
 @keyframes rvUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
 @keyframes heroIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes tilePop{from{opacity:0;transform:rotate(-24deg) scale(.55)}to{opacity:1;transform:rotate(-6deg) scale(1)}}
-@keyframes tileFloat{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-18px)}}
+@keyframes tilePop{from{opacity:0;transform:rotate(-18deg) scale(.55)}to{opacity:1;transform:rotate(0) scale(1)}}
+@keyframes tileFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 @keyframes glowPulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.14);opacity:1}}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
@@ -55,23 +74,23 @@ html{scroll-behavior:smooth}
 .fl3{animation:heroIn .9s cubic-bezier(.16,1,.3,1) 1.1s backwards,bob 5.5s ease-in-out 2s infinite}
 .fl:hover{box-shadow:0 22px 46px rgba(0,0,0,.16)!important}
 .caret{animation:blink 1.05s infinite}
-.cue svg{animation:nudge 1.6s ease-in-out infinite}
-.cue{transition:color .2s}.cue:hover{color:#222222!important}
+.cue svg,.cue img{animation:nudge 1.6s ease-in-out infinite}
+.cue{transition:opacity .2s}.cue:hover{opacity:.75}
 
 /* nav */
-.nl{background-image:linear-gradient(#C2381F,#C2381F);background-size:0% 2px;background-repeat:no-repeat;background-position:0 calc(100% - 4px);transition:background-size .35s cubic-bezier(.2,.8,.2,1),color .2s}
-.nl:hover{background-size:100% 2px;color:#C2381F!important}
+.nl{background-image:linear-gradient(#F74130,#F74130);background-size:0% 2px;background-repeat:no-repeat;background-position:0 calc(100% - 4px);transition:background-size .35s cubic-bezier(.2,.8,.2,1),color .2s}
+.nl:hover{background-size:100% 2px;color:#F74130!important}
 
 /* buttons */
 .btn{transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background-color .3s}
 .btn:hover{transform:translateY(-3px)}
 .btn:active{transform:translateY(0) scale(.98)}
-.btn svg{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.btn:hover svg{transform:translateX(5px)}
+.btn svg,.btn img{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.btn:hover svg,.btn:hover img{transform:translateX(5px)}
 .btn-red{position:relative;overflow:hidden}
 .btn-red::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.38),rgba(255,255,255,0));transform:skewX(-20deg);transition:left .75s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 .btn-red:hover::after{left:135%}
-.btn-red:hover{background-color:#D6412D!important;box-shadow:0 20px 40px rgba(228,82,61,.42)!important}
+.btn-red:hover{background-color:#E5372A!important;box-shadow:0 20px 40px rgba(228,82,61,.42)!important}
 .btn-dark:hover{background-color:#3A3A3A!important;box-shadow:0 14px 30px rgba(0,0,0,.22)}
 .btn-white:hover{background-color:#F3F3F3!important}
 
@@ -81,9 +100,13 @@ html{scroll-behavior:smooth}
 .card-soft:hover{background-color:#FFFFFF!important}
 .tile{transition:transform .6s cubic-bezier(.34,1.56,.64,1),box-shadow .6s}
 .card:hover .tile{transform:rotate(0deg) scale(1.1) translateY(-4px)!important;box-shadow:0 24px 40px rgba(200,57,31,.38)!important}
-.svc:hover{border-color:#E4523D!important}
+.svc:hover{border-color:#F74130!important}
 .svc .go{transition:background-color .3s,color .3s,transform .35s cubic-bezier(.2,.8,.2,1)}
-.svc:hover .go{background-color:#E4523D!important;color:#ffffff!important;transform:translateX(4px)}
+.svc:hover .go{background-color:#F74130!important;color:#ffffff!important;transform:translateX(4px)}
+.svc .go img{transition:filter .3s}
+.svc:hover .go img{filter:brightness(0) invert(1)}
+.svc-img{transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
+.svc:hover .svc-img{transform:scale(1.1) translateY(-4px)}
 .lift{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
 .lift:hover{transform:translateY(-6px);box-shadow:0 34px 70px rgba(228,82,61,.22)!important}
 
@@ -135,7 +158,7 @@ html{scroll-behavior:smooth}
 /* form */
 .fi{transition:border-color .2s,box-shadow .2s,background-color .2s}
 .fi:hover{border-color:#C9C9C9!important}
-.fi:focus{outline:none;border-color:#E4523D!important;background-color:#ffffff!important;box-shadow:0 0 0 4px rgba(228,82,61,.15)}
+.fi:focus{outline:none;border-color:#F74130!important;background-color:#ffffff!important;box-shadow:0 0 0 4px rgba(228,82,61,.15)}
 .chip{transition:border-color .2s,transform .2s cubic-bezier(.2,.8,.2,1),background-color .2s}
 .chip:hover{border-color:#222222!important;transform:translateY(-2px)}
 
@@ -157,9 +180,9 @@ html{scroll-behavior:smooth}
 <!-- HEADER -->
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #F0F0F0">
 <div style="max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 32px">
-<a href="#top" style="display: flex; align-items: center; gap: 8px; text-decoration: none">
-<span style="font-size: 26px; font-weight: 900; color: #E4523D; letter-spacing: -0.05em">mediahub</span>
-<span style="font-size: 14px; font-weight: 600; color: #333333">미디어허브</span>
+<a href="#top" style="display: flex; align-items: flex-end; gap: 8px; text-decoration: none">
+<span style="font-size: 26px; line-height: 41.6px; font-weight: 900; color: #F74130; letter-spacing: -0.05em">mediahub</span>
+<span style="font-size: 14px; line-height: 30px; font-weight: 600; color: #333333">미디어허브</span>
 </a>
 <nav aria-label="주요 메뉴" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 30px; font-size: 15px; font-weight: 600">
 <a class="nl" href="#why" style="color: #222222; text-decoration: none; padding: 10px 0">홍보의 중요성</a>
@@ -171,41 +194,41 @@ html{scroll-behavior:smooth}
 </header>
 
 <!-- HERO -->
-<section id="top" style="background: #F6F6F6; padding: 96px 24px 104px; overflow: hidden">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
-<p class="h-in hd1" style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">홍보의 중요성</p>
-<h1 class="h-in hd2" style="margin: 0; font-size: clamp(40px, 5.4vw, 68px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.22">우리 브랜드를<br>검색하면,<br><span style="color: #E4523D">뭐가 나오나요?</span></h1>
-<p class="h-in hd3" style="margin: 0; font-size: clamp(18px, 1.8vw, 21px); line-height: 1.7; color: #555555">언론사가 직접 쓴 기사를<br><strong style="color: #222222; font-weight: 700">250여 개 제휴 언론사에 동시 송출</strong>합니다.</p>
-<div class="h-in hd4" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 6px">
-<a class="btn btn-red" href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 64px; padding: 0 34px; border-radius: 16px; background: #E4523D; color: #ffffff; font-size: 20px; font-weight: 800; text-decoration: none; box-shadow: 0 14px 30px rgba(228,82,61,0.32)">무료 상담 신청하기
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
-<a class="cue" href="#why" style="display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: #555555; font-size: 15px; font-weight: 600; text-decoration: none">아래로 스크롤
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></a>
+<section id="top" style="position: relative; min-height: 952px; padding: 0 24px; box-sizing: border-box; overflow: hidden; background: #F6F6F6 url('assets/hero-photo.png') center / cover no-repeat">
+<span aria-hidden="true" style="position: absolute; inset: 0; background: rgba(0,0,0,0.3)"></span>
+<div class="hero-inner" style="position: relative; max-width: 1200px; margin: 0 auto; padding-top: 229px; display: flex; flex-direction: column; gap: 42px; color: #ffffff">
+<h1 class="h-in hd2" style="margin: 0; font-family: 'Paperlogy', Pretendard, sans-serif; font-weight: 800; color: #ffffff; letter-spacing: -0.038em"><span style="display: block; font-weight: 500; font-size: clamp(32px, 5vw, 60px); line-height: 1.383">우리 브랜드를</span><span style="display: block; font-size: clamp(44px, 6.67vw, 80px); line-height: 1.2375">검색하면,<br>뭐가 나오나요?</span></h1>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px 0">
+<p class="h-in hd3" style="margin: 0 0 0 7px; flex: 0 1 390px; font-size: 20px; line-height: 1.7; color: #ffffff">언론사가 직접 쓴 기사를<br><strong style="font-weight: 700">300여 개 제휴 언론사에 동시 송출</strong>합니다.</p>
+<a class="h-in hd4 btn btn-red" href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 64px; padding: 0 34px; border-radius: 16px; background: #F74130; color: #ffffff; font-size: 20px; font-weight: 800; text-decoration: none; box-shadow: 0 14px 30px rgba(228,82,61,0.32)">무료 상담 신청하기
+<img src="assets/ic-arrow-hero.svg" width="20" height="20" alt="" aria-hidden="true"></a>
 </div>
 </div>
+<a class="cue h-in hd5" href="#intro" style="position: absolute; left: 0; right: 0; bottom: 61px; width: max-content; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 3px; color: #ffffff; font-size: 14px; line-height: 22.4px; text-decoration: none">아래로 스크롤
+<img src="assets/ic-chevron-down.svg" width="22" height="22" alt="" aria-hidden="true"></a>
+</section>
 
-<!-- hero visual -->
-<div class="hero-vis" style="flex: 1 1 460px; min-width: 0; display: flex; justify-content: center">
-<div style="position: relative; width: 100%; max-width: 520px; height: 460px">
-<span class="glow" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 400px; height: 400px; margin: -200px 0 0 -200px; border-radius: 50%; background: radial-gradient(closest-side, rgba(228,82,61,0.20), rgba(228,82,61,0))"></span>
-<div class="tilef" style="position: absolute; left: 50%; top: 50%; width: 250px; height: 250px; margin: -125px 0 0 -125px; border-radius: 64px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 48%, #C8391F 100%); box-shadow: 0 30px 60px rgba(200,57,31,0.38), inset 0 6px 14px rgba(255,255,255,0.35), inset 0 -10px 20px rgba(120,20,5,0.25); transform: rotate(-6deg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #ffffff">
-<span style="font-size: 56px; font-weight: 900; letter-spacing: -0.06em; line-height: 1">media</span>
-<span style="font-size: 56px; font-weight: 900; letter-spacing: -0.06em; line-height: 1">hub</span>
-<span style="margin-top: 8px; font-size: 18px; font-weight: 700">미디어허브</span>
+<!-- INTRO (소개) -->
+<section id="intro" style="background: #F6F6F6; padding: 238px 24px; overflow: hidden">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 56px 24px">
+<div class="rv" style="flex: 1 1 520px; min-width: 0; padding-top: 46px; display: flex; flex-direction: column; gap: 40px">
+<h2 class="ttl" style="color: #322828">브랜드 홍보, 기사 <span class="emph">한</span> <span class="emph">건</span> 부터<br><span style="color: #F74130">미디어허브</span></h2>
+<p style="margin: 0; font-size: clamp(19px, 2.2vw, 26px); line-height: 1.46; font-weight: 500; color: #6C6C6C; letter-spacing: -0.025em">전문기자가 쓰고 언론사가 직접 발행합니다.</p>
 </div>
-<div class="fl fl1" style="position: absolute; left: 0; top: 34px; display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 999px; background: #ffffff; box-shadow: 0 14px 34px rgba(0,0,0,0.10)">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222222" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
-<span style="font-size: 16px; font-weight: 700; color: #222222">[우리 브랜드]</span>
-<span class="caret" style="width: 2px; height: 18px; background: #E4523D"></span>
+<div class="hero-vis" style="flex: 0 0 auto; margin-right: 26px; display: flex; justify-content: center">
+<div style="position: relative; width: 429px; height: 324px">
+<div class="tilef" style="position: absolute; left: 58px; top: 35px; width: 240px; height: 240px; border-radius: 56px; background: linear-gradient(135deg, #FF664D 0%, #ED3321 83.333%); box-shadow: 0 24px 48px rgba(247,64,48,0.35), inset 0 6px 14px rgba(255,255,255,0.35), inset 0 -10px 20px rgba(120,20,5,0.25), inset 0 4px 8px rgba(255,255,255,0.35); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #ffffff; font-family: 'Noto Sans KR', sans-serif">
+<span style="font-size: 40px; font-weight: 900; letter-spacing: -1.5px; line-height: normal">MEDIAHUB</span>
+<span style="font-size: 20px; font-weight: 700; letter-spacing: -0.64px; line-height: normal">미디어허브</span>
 </div>
-<div class="fl fl2" style="position: absolute; right: 0; bottom: 44px; display: flex; flex-direction: column; gap: 2px; padding: 18px 22px; border-radius: 20px; background: #ffffff; box-shadow: 0 14px 34px rgba(0,0,0,0.10)">
-<span style="font-size: 13px; font-weight: 600; color: #767676">제휴 언론사 동시 송출</span>
-<span style="font-size: 30px; font-weight: 900; color: #222222; letter-spacing: -0.03em">250<span style="color: #E4523D">여 곳</span></span>
+<div class="fl fl1" style="position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-radius: 999px; background: #ffffff; box-shadow: 0 14px 34px rgba(0,0,0,0.10)">
+<img src="assets/ic-search.svg" width="20" height="20" alt="" aria-hidden="true">
+<span style="font-size: 16px; line-height: 25.6px; font-weight: 700; color: #222222">[우리 브랜드]</span>
+<span class="caret" style="width: 2px; height: 18px; background: #F74130"></span>
 </div>
-<div class="fl fl3" style="position: absolute; left: 14px; bottom: 26px; display: flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 14px; background: #222222; color: #ffffff; box-shadow: 0 14px 34px rgba(0,0,0,0.18); font-size: 15px; font-weight: 700">
-<span style="width: 22px; height: 22px; border-radius: 50%; background: #E4523D; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>
-자료 전달 후 당일 송출
+<div class="fl fl2" style="position: absolute; left: 246px; top: 217px; width: 183px; height: 107px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 17px 22px 18px; border-radius: 20px; background: #ffffff; box-shadow: 0 14px 34px rgba(0,0,0,0.10)">
+<span style="font-size: 13px; line-height: 20.8px; font-weight: 600; color: #767676">제휴 언론사 동시 송출</span>
+<span style="font-weight: 900; letter-spacing: -0.9px; line-height: 48px; white-space: nowrap"><span style="font-size: 40px; color: #F74130">300</span><span style="font-size: 30px; color: #000000">여 곳</span></span>
 </div>
 </div>
 </div>
@@ -213,76 +236,76 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- WHY MEDIAHUB -->
-<section id="why" style="padding: 130px 24px; background: #ffffff">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
-<div class="rv" style="display: flex; flex-direction: column; gap: 18px">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">Why MEDIAHUB</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.3">대행사가 아닙니다.<br><span style="color: #E4523D">언론사</span>입니다.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.75; color: #555555">미디어허브는 인터넷언론사를 직접 운영합니다.<br>전문기자가 전문성 있는 기사를 쓰고, 결과 보고서까지 원스톱으로 제공합니다.</p>
+<section id="why" style="padding: 150px 24px; background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 25px">
+<p class="eyebrow">Why MEDIAHUB</p>
+<h2 class="ttl">대행사가 아닙니다.<br><span style="color: #F74130">언론사</span>입니다.</h2>
+<p class="lead">미디어허브는 인터넷언론사를 직접 운영합니다.<br>전문기자가 전문성 있는 기사를 쓰고, 결과 보고서까지 원스톱으로 제공합니다.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px">
-<div class="rv card d1" style="background: #ffffff; border: 1px solid #F1F1F1; border-radius: 28px; padding: 44px 32px 40px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px">
-<span class="tile" style="width: 96px; height: 96px; border-radius: 28px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 50%, #C8391F 100%); box-shadow: 0 16px 30px rgba(200,57,31,0.30), inset 0 4px 10px rgba(255,255,255,0.35); color: #ffffff; display: flex; align-items: center; justify-content: center; transform: rotate(-6deg); margin-bottom: 10px">
-<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12v16H6a2 2 0 0 1-2-2z"></path><path d="M16 8h4v10a2 2 0 0 1-2 2"></path><path d="M8 8h4M8 12h4M8 16h4"></path></svg>
+<div class="rv card d1" style="min-height: 343px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 62px 24px 40px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; text-align: center">
+<span class="tile" style="width: 96px; height: 96px; border-radius: 28px; background: linear-gradient(135deg, #FF664D 0%, #ED3321 83.333%); box-shadow: 0 4px 12.6px rgba(247,65,48,0.30), inset 0 6px 14px rgba(255,255,255,0.35), inset 0 -10px 20px rgba(120,20,5,0.25), inset 0 4px 8px rgba(255,255,255,0.35); display: flex; align-items: center; justify-content: center">
+<img src="assets/ic-newspaper.svg" width="36" height="36" alt="" aria-hidden="true">
 </span>
-<h3 style="margin: 0; font-size: 22px; font-weight: 800; color: #222222">자체 언론사 직접 운영</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.7">브랜드경제신문·대한민국소비자신문을 직접 운영합니다. 대행사를 거치지 않고 언론사가 직접 기사를 작성하고 발행합니다.</p>
+<h3 style="margin: 27px 0 0; font-size: 22px; line-height: 1.3; font-weight: 800; color: #222222">자체 언론사 직접 운영</h3>
+<p style="margin: 17px 0 0; font-size: 16px; line-height: 1.5">언론사를 직접 운영합니다. 대행사를 거치지 않고<br>언론사가 직접 기사를 작성하고 발행합니다.</p>
 </div>
-<div class="rv card d2" style="background: #ffffff; border: 1px solid #F1F1F1; border-radius: 28px; padding: 44px 32px 40px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px">
-<span class="tile" style="width: 96px; height: 96px; border-radius: 28px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 50%, #C8391F 100%); box-shadow: 0 16px 30px rgba(200,57,31,0.30), inset 0 4px 10px rgba(255,255,255,0.35); color: #ffffff; display: flex; align-items: center; justify-content: center; transform: rotate(6deg); margin-bottom: 10px">
-<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"></path></svg>
+<div class="rv card d2" style="min-height: 343px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 62px 24px 40px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; text-align: center">
+<span class="tile" style="width: 96px; height: 96px; border-radius: 28px; background: linear-gradient(135deg, #FF664D 0%, #ED3321 83.333%); box-shadow: 0 4px 12.6px rgba(247,65,48,0.30), inset 0 6px 14px rgba(255,255,255,0.35), inset 0 -10px 20px rgba(120,20,5,0.25), inset 0 4px 8px rgba(255,255,255,0.35); display: flex; align-items: center; justify-content: center">
+<img src="assets/ic-radio-tower.svg" width="36" height="36" alt="" aria-hidden="true">
 </span>
-<h3 style="margin: 0; font-size: 22px; font-weight: 800; color: #222222">포털 노출 &amp; 제휴 매체 송출</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.7">250여 개 제휴 언론사로 브랜드 소식을 넓게 알립니다.</p>
+<h3 style="margin: 27px 0 0; font-size: 22px; line-height: 1.3; font-weight: 800; color: #222222">포털 노출 &amp; 제휴 매체 송출</h3>
+<p style="margin: 17px 0 0; font-size: 16px; line-height: 1.5">250여 개 제휴 언론사로 브랜드<br>소식을 넓게 알립니다.</p>
 </div>
-<div class="rv card d3" style="background: #ffffff; border: 1px solid #F1F1F1; border-radius: 28px; padding: 44px 32px 40px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px">
-<span class="tile" style="width: 96px; height: 96px; border-radius: 28px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 50%, #C8391F 100%); box-shadow: 0 16px 30px rgba(200,57,31,0.30), inset 0 4px 10px rgba(255,255,255,0.35); color: #ffffff; display: flex; align-items: center; justify-content: center; transform: rotate(-6deg); margin-bottom: 10px">
-<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M8 17v-3M12 17v-6M16 17v-4"></path></svg>
+<div class="rv card d3" style="min-height: 343px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 62px 24px 40px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; text-align: center">
+<span class="tile" style="width: 96px; height: 96px; border-radius: 28px; background: linear-gradient(135deg, #FF664D 0%, #ED3321 83.333%); box-shadow: 0 4px 12.6px rgba(247,65,48,0.30), inset 0 6px 14px rgba(255,255,255,0.35), inset 0 -10px 20px rgba(120,20,5,0.25), inset 0 4px 8px rgba(255,255,255,0.35); display: flex; align-items: center; justify-content: center">
+<img src="assets/ic-file-chart.svg" width="36" height="36" alt="" aria-hidden="true">
 </span>
-<h3 style="margin: 0; font-size: 22px; font-weight: 800; color: #222222">결과 보고서까지 원스톱</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.7">기업 분석, 기사 기획, 작성, 송출, 결과 보고서까지 한 번에 진행합니다.</p>
+<h3 style="margin: 27px 0 0; font-size: 22px; line-height: 1.3; font-weight: 800; color: #222222">결과 보고서까지 원스톱</h3>
+<p style="margin: 17px 0 0; font-size: 16px; line-height: 1.5">기업 분석, 기사 기획, 작성, 송출,<br>결과 보고서까지 한 번에 진행합니다.</p>
 </div>
 </div>
 </div>
 </section>
 
 <!-- COMPLAINTS (full red) -->
-<section id="mediahub" style="padding: 130px 24px; background: #E4523D; color: #ffffff">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div class="rv" style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff; opacity: 0.9">홍보 대행의 가장 큰 불만</p>
-<h2 style="margin: 0; font-size: clamp(36px, 4.4vw, 54px); font-weight: 800; color: #ffffff; letter-spacing: -0.045em; line-height: 1.3">‘답이 늦다’<br>‘전문성이 없다’<br>걱정 마세요.</h2>
-<p style="margin: 0; font-size: 20px; line-height: 1.7; font-weight: 600; color: #ffffff">전문기자가 1:1 전담으로<br>언론홍보를 책임지겠습니다.</p>
+<section id="mediahub" style="padding: 150px 24px; background: #F74130; color: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 56px 15px">
+<div class="rv" style="flex: 1 1 440px; max-width: 597px; min-width: 0; display: flex; flex-direction: column; gap: 25px">
+<p class="eyebrow" style="color: #ffffff">홍보 대행의 가장 큰 불만</p>
+<h2 class="ttl" style="color: #ffffff">[ 답이 늦다 ]<br>[ 전문성이 없다 ]<br>걱정 마세요.</h2>
+<p class="lead" style="color: #ffffff">전문기자가 1:1 전담으로<br>언론홍보를 책임지겠습니다.</p>
 </div>
-<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="flex: 0 1 588px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
 <div class="rv bub b1" style="align-self: flex-start; max-width: 88%; display: flex; flex-direction: column; gap: 6px">
 <span style="font-size: 13px; font-weight: 700; color: #ffffff">고객사</span>
-<p style="margin: 0; background: #ffffff; border-radius: 6px 22px 22px 22px; padding: 18px 22px; font-size: 17px; font-weight: 600; color: #222222; box-shadow: 0 10px 24px rgba(120,20,5,0.18)">신제품 출시 기사, 이번 주 안에 가능할까요?</p>
+<p style="margin: 0; background: #ffffff; border-radius: 6px 22px 22px 22px; padding: 17px 22px 18px; font-size: 17px; line-height: 27.2px; font-weight: 600; color: #222222; box-shadow: 0 10px 24px rgba(120,20,5,0.35)">신제품 출시 기사, 이번 주 안에 가능할까요?</p>
 </div>
 <div class="rv bub b2" style="align-self: flex-end; max-width: 88%; display: flex; flex-direction: column; align-items: flex-end; gap: 6px">
 <span style="font-size: 13px; font-weight: 700; color: #ffffff">전담기자 · 미디어허브</span>
-<p style="margin: 0; display: flex; align-items: flex-start; gap: 12px; background: #222222; border-radius: 22px 6px 22px 22px; padding: 18px 22px; font-size: 17px; font-weight: 600; color: #ffffff; box-shadow: 0 10px 24px rgba(0,0,0,0.22)"><span style="flex: 0 0 24px; height: 24px; border-radius: 50%; background: #E4523D; display: flex; align-items: center; justify-content: center; margin-top: 1px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>네, 오늘 자료 받으면 내일 오전에 초안 드리겠습니다.</p>
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; background: #222222; border-radius: 22px 6px 22px 22px; padding: 17px 22px 18px; font-size: 17px; line-height: 27.2px; font-weight: 600; color: #ffffff; box-shadow: 0 10px 24px rgba(120,20,5,0.35)"><span style="flex: 0 0 24px; height: 24px; border-radius: 50%; background: #F74130; display: flex; align-items: center; justify-content: center"><img src="assets/ic-check-13.svg" width="13" height="13" alt="" aria-hidden="true"></span>네, 오늘 자료 받으면 내일 오전에 초안 드리겠습니다.</p>
 </div>
 <div class="rv bub b3" style="align-self: flex-start; max-width: 88%; display: flex; flex-direction: column; gap: 6px; margin-top: 8px">
 <span style="font-size: 13px; font-weight: 700; color: #ffffff">고객사</span>
-<p style="margin: 0; background: #ffffff; border-radius: 6px 22px 22px 22px; padding: 18px 22px; font-size: 17px; font-weight: 600; color: #222222; box-shadow: 0 10px 24px rgba(120,20,5,0.18)">업계 용어가 많은데 괜찮을까요?</p>
+<p style="margin: 0; background: #ffffff; border-radius: 6px 22px 22px 22px; padding: 17px 22px 18px; font-size: 17px; line-height: 27.2px; font-weight: 600; color: #222222; box-shadow: 0 10px 24px rgba(120,20,5,0.35)">업계 용어가 많은데 괜찮을까요?</p>
 </div>
 <div class="rv bub b4" style="align-self: flex-end; max-width: 88%; display: flex; flex-direction: column; align-items: flex-end; gap: 6px">
 <span style="font-size: 13px; font-weight: 700; color: #ffffff">전담기자 · 미디어허브</span>
-<p style="margin: 0; display: flex; align-items: flex-start; gap: 12px; background: #222222; border-radius: 22px 6px 22px 22px; padding: 18px 22px; font-size: 17px; font-weight: 600; color: #ffffff; box-shadow: 0 10px 24px rgba(0,0,0,0.22)"><span style="flex: 0 0 24px; height: 24px; border-radius: 50%; background: #E4523D; display: flex; align-items: center; justify-content: center; margin-top: 1px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>해당 업종 기사 경험이 있는 기자가 직접 씁니다.</p>
+<p style="margin: 0; display: flex; align-items: center; gap: 12px; background: #222222; border-radius: 22px 6px 22px 22px; padding: 17px 22px 18px; font-size: 17px; line-height: 27.2px; font-weight: 600; color: #ffffff; box-shadow: 0 10px 24px rgba(120,20,5,0.35)"><span style="flex: 0 0 24px; height: 24px; border-radius: 50%; background: #F74130; display: flex; align-items: center; justify-content: center"><img src="assets/ic-check-13.svg" width="13" height="13" alt="" aria-hidden="true"></span>해당 업종 기사 경험이 있는 기자가 직접 씁니다.</p>
 </div>
 </div>
 </div>
 </section>
 
 <!-- BRAND ANALYSIS -->
-<section style="padding: 130px 24px; background: #ffffff">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div class="rv" style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">단순 송출? NO!</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.3">브랜드 분석부터 기획까지,<br>우리 회사 <span style="color: #E4523D">홍보팀처럼</span></h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.75">시장과 경쟁사를 살피고 우리 회사만의 강점과 키워드를 찾아<br>맞는 기사 방향을 제안합니다.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px">
+<section style="padding: 150px 24px; background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px 83px">
+<div class="rv" style="flex: 1 1 440px; max-width: 597px; min-width: 0; display: flex; flex-direction: column; gap: 25px">
+<p class="eyebrow">단순 송출? NO!</p>
+<h2 class="ttl">브랜드 분석부터 기획까지,<br>우리 회사 <span style="color: #F74130">홍보팀처럼</span></h2>
+<p class="lead">시장과 경쟁사를 살피고 우리 회사만의 강점과 키워드를 찾아<br>맞는 기사 방향을 제안합니다.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
 <span class="tagchip" style="padding: 10px 18px; border-radius: 999px; background: #F6F6F6; font-size: 15px; font-weight: 700; color: #222222"># 자사 강점</span>
 <span class="tagchip" style="padding: 10px 18px; border-radius: 999px; background: #F6F6F6; font-size: 15px; font-weight: 700; color: #222222"># 경쟁사 분석</span>
 <span class="tagchip" style="padding: 10px 18px; border-radius: 999px; background: #F6F6F6; font-size: 15px; font-weight: 700; color: #222222"># 트렌드 분석</span>
@@ -290,23 +313,23 @@ html{scroll-behavior:smooth}
 <span class="tagchip" style="padding: 10px 18px; border-radius: 999px; background: #F6F6F6; font-size: 15px; font-weight: 700; color: #222222"># 키워드 분석</span>
 </div>
 </div>
-<div style="flex: 1 1 440px; min-width: 0; display: flex; justify-content: center">
-<div class="rv lift d2" style="width: 100%; max-width: 520px; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 28px; box-sizing: border-box; box-shadow: 0 24px 60px rgba(228,82,61,0.14)">
+<div style="flex: 0 1 520px; min-width: 0; display: flex; justify-content: center">
+<div class="rv lift d2" style="width: 100%; max-width: 520px; min-height: 422px; display: flex; align-items: center; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 28px; box-sizing: border-box; box-shadow: 0 24px 60px rgba(228,82,61,0.14)">
 <svg viewBox="-80 0 560 390" style="width: 100%; height: auto; display: block" role="img" aria-label="브랜드 기획 분석 항목: 자사 강점, 경쟁사 분석, 핵심 타겟, 키워드 분석, 트렌드 분석">
 <polygon points="200,50 342.7,153.6 288.2,321.4 111.8,321.4 57.3,153.6" fill="#FAFAFA" stroke="#E6E6E6" stroke-width="1.5"></polygon>
 <polygon points="200,100 295.1,169.1 258.8,280.9 141.2,280.9 104.9,169.1" fill="none" stroke="#EDEDED" stroke-width="1.5"></polygon>
 <polygon points="200,150 247.6,184.5 229.4,240.5 170.6,240.5 152.4,184.5" fill="none" stroke="#EDEDED" stroke-width="1.5"></polygon>
 <path d="M200 200L200 50M200 200L342.7 153.6M200 200L288.2 321.4M200 200L111.8 321.4M200 200L57.3 153.6" stroke="#EDEDED" stroke-width="1.5"></path>
-<polygon class="radar-data" points="200,65 314.1,162.9 274.7,302.7 134.1,290.6 71.6,158.3" fill="#E4523D" fill-opacity="0.16" stroke="#E4523D" stroke-width="3" stroke-linejoin="round"></polygon>
-<circle class="radar-pt" cx="200" cy="65" r="6" fill="#ffffff" stroke="#E4523D" stroke-width="3"></circle><circle class="radar-pt" cx="314.1" cy="162.9" r="6" fill="#ffffff" stroke="#E4523D" stroke-width="3"></circle><circle class="radar-pt" cx="274.7" cy="302.7" r="6" fill="#ffffff" stroke="#E4523D" stroke-width="3"></circle><circle class="radar-pt" cx="134.1" cy="290.6" r="6" fill="#ffffff" stroke="#E4523D" stroke-width="3"></circle><circle class="radar-pt" cx="71.6" cy="158.3" r="6" fill="#ffffff" stroke="#E4523D" stroke-width="3"></circle>
-<circle cx="200" cy="200" r="42" fill="#E4523D"></circle>
-<text x="200" y="196" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">브랜드</text>
-<text x="200" y="215" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">기획</text>
-<text x="200" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#222222">자사 강점</text>
-<text x="358" y="152" text-anchor="start" font-size="16" font-weight="700" fill="#222222">경쟁사 분석</text>
-<text x="300" y="352" text-anchor="middle" font-size="16" font-weight="700" fill="#222222">핵심 타겟</text>
-<text x="100" y="352" text-anchor="middle" font-size="16" font-weight="700" fill="#222222">키워드 분석</text>
-<text x="42" y="152" text-anchor="end" font-size="16" font-weight="700" fill="#222222">트렌드 분석</text>
+<polygon class="radar-data" points="200,65 314.1,162.9 274.7,302.7 134.1,290.6 71.6,158.3" fill="#F74130" fill-opacity="0.16" stroke="#F74130" stroke-width="3" stroke-linejoin="round"></polygon>
+<circle class="radar-pt" cx="200" cy="65" r="6" fill="#ffffff" stroke="#F74130" stroke-width="3"></circle><circle class="radar-pt" cx="314.1" cy="162.9" r="6" fill="#ffffff" stroke="#F74130" stroke-width="3"></circle><circle class="radar-pt" cx="274.7" cy="302.7" r="6" fill="#ffffff" stroke="#F74130" stroke-width="3"></circle><circle class="radar-pt" cx="134.1" cy="290.6" r="6" fill="#ffffff" stroke="#F74130" stroke-width="3"></circle><circle class="radar-pt" cx="71.6" cy="158.3" r="6" fill="#ffffff" stroke="#F74130" stroke-width="3"></circle>
+<circle cx="200" cy="200" r="42" fill="#F74130"></circle>
+<text x="200" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">브랜드</text>
+<text x="200" y="215" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">기획</text>
+<text x="200" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#222222">자사 강점</text>
+<text x="358" y="152" text-anchor="start" font-size="15" font-weight="700" fill="#222222">경쟁사 분석</text>
+<text x="300" y="352" text-anchor="middle" font-size="15" font-weight="700" fill="#222222">핵심 타겟</text>
+<text x="100" y="352" text-anchor="middle" font-size="15" font-weight="700" fill="#222222">키워드 분석</text>
+<text x="42" y="152" text-anchor="end" font-size="15" font-weight="700" fill="#222222">트렌드 분석</text>
 </svg>
 </div>
 </div>
@@ -314,29 +337,29 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- WRITING PROCESS with phones -->
-<section style="padding: 130px 24px; background: #F6F6F6">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px">
-<div class="rv" style="display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">한 건이라도, 전문가에게</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.3">기사 작성,<br>어렵지 않습니다</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.75">키워드, 사진, 간단한 회사 소개만 보내 주세요.<br>전문 기자가 업종에 맞춰 기사 초안을 작성해 드립니다.</p>
+<section style="padding: 150px 24px; background: #F6F6F6">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px">
+<div class="rv" style="display: flex; flex-direction: column; align-items: center; gap: 25px; text-align: center">
+<p class="eyebrow">한 건이라도, 전문가에게</p>
+<h2 class="ttl">기사 작성,<br>어렵지 않습니다</h2>
+<p class="lead">키워드, 사진, 간단한 회사 소개만 보내 주세요.<br>전문 기자가 업종에 맞춰 기사 초안을 작성해 드립니다.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px">
 
 <div class="rv card step d1" style="background: #ffffff; border-radius: 32px; padding: 40px 32px 0; overflow: hidden; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 0 0 rgba(0,0,0,0)">
-<span style="font-size: 16px; font-weight: 800; color: #C2381F; letter-spacing: 0.02em">STEP.01</span>
+<span style="font-size: 16px; font-weight: 800; color: #F74130; letter-spacing: 0.02em">STEP.01</span>
 <h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #222222; letter-spacing: -0.03em">자료 전달</h3>
 <p style="margin: 0; font-size: 16px">키워드 · 사진 · 회사 소개만 보내 주세요.</p>
 <div class="phone" style="margin: 26px auto 0; width: 220px; height: 250px; border: 9px solid #222222; border-bottom: 0; border-radius: 38px 38px 0 0; background: #ffffff; padding: 30px 16px 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 14px; font-weight: 800; color: #222222">보낼 자료</span>
-<span class="ck ck1" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 10px; background: #F6F6F6; font-size: 13px; font-weight: 600; color: #222222"><span style="width: 18px; height: 18px; border-radius: 50%; background: #E4523D; display: flex; align-items: center; justify-content: center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>키워드</span>
-<span class="ck ck2" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 10px; background: #F6F6F6; font-size: 13px; font-weight: 600; color: #222222"><span style="width: 18px; height: 18px; border-radius: 50%; background: #E4523D; display: flex; align-items: center; justify-content: center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>사진</span>
-<span class="ck ck3" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 10px; background: #F6F6F6; font-size: 13px; font-weight: 600; color: #222222"><span style="width: 18px; height: 18px; border-radius: 50%; background: #E4523D; display: flex; align-items: center; justify-content: center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>회사 소개</span>
+<span class="ck ck1" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 40.8px; box-sizing: border-box; padding: 0 10px 0 12px; border-radius: 10px; background: #F6F6F6; font-size: 13px; line-height: 20.8px; font-weight: 600; color: #222222">키워드<span style="width: 18px; height: 18px; border-radius: 50%; background: #F74130; display: flex; align-items: center; justify-content: center"><img src="assets/ic-check-10.svg" width="10" height="10" alt="" aria-hidden="true"></span></span>
+<span class="ck ck2" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 40.8px; box-sizing: border-box; padding: 0 10px 0 12px; border-radius: 10px; background: #F6F6F6; font-size: 13px; line-height: 20.8px; font-weight: 600; color: #222222">사진<span style="width: 18px; height: 18px; border-radius: 50%; background: #F74130; display: flex; align-items: center; justify-content: center"><img src="assets/ic-check-10.svg" width="10" height="10" alt="" aria-hidden="true"></span></span>
+<span class="ck ck3" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; height: 40.8px; box-sizing: border-box; padding: 0 10px 0 12px; border-radius: 10px; background: #F6F6F6; font-size: 13px; line-height: 20.8px; font-weight: 600; color: #222222">회사 소개<span style="width: 18px; height: 18px; border-radius: 50%; background: #F74130; display: flex; align-items: center; justify-content: center"><img src="assets/ic-check-10.svg" width="10" height="10" alt="" aria-hidden="true"></span></span>
 </div>
 </div>
 
 <div class="rv card step d2" style="background: #ffffff; border-radius: 32px; padding: 40px 32px 0; overflow: hidden; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 0 0 rgba(0,0,0,0)">
-<span style="font-size: 16px; font-weight: 800; color: #C2381F; letter-spacing: 0.02em">STEP.02</span>
+<span style="font-size: 16px; font-weight: 800; color: #F74130; letter-spacing: 0.02em">STEP.02</span>
 <h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #222222; letter-spacing: -0.03em">기사 작성 · 검수</h3>
 <p style="margin: 0; font-size: 16px">전문 기자가 초안을 쓰고 함께 확인합니다.</p>
 <div class="phone" style="margin: 26px auto 0; width: 220px; height: 250px; border: 9px solid #222222; border-bottom: 0; border-radius: 38px 38px 0 0; background: #ffffff; padding: 30px 16px 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px">
@@ -346,23 +369,22 @@ html{scroll-behavior:smooth}
 <span class="ln ln3" style="height: 8px; width: 96%; border-radius: 4px; background: #EDEDED"></span>
 <span class="ln ln4" style="height: 8px; width: 80%; border-radius: 4px; background: #EDEDED"></span>
 <span class="ln ln5" style="height: 8px; width: 90%; border-radius: 4px; background: #EDEDED"></span>
-<span class="note" style="align-self: flex-end; margin-top: 6px; padding: 8px 12px; border-radius: 12px 12px 4px 12px; background: #E4523D; color: #ffffff; font-size: 12px; font-weight: 700">검수 함께 확인</span>
+<span class="note" style="align-self: flex-end; margin-top: 6px; padding: 8px 12px; border-radius: 12px 12px 4px 12px; background: #F74130; color: #ffffff; font-size: 12px; font-weight: 700">검수 함께 확인</span>
 </div>
 </div>
 
 <div class="rv card step d3" style="background: #ffffff; border-radius: 32px; padding: 40px 32px 0; overflow: hidden; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 0 0 rgba(0,0,0,0)">
-<span style="font-size: 16px; font-weight: 800; color: #C2381F; letter-spacing: 0.02em">STEP.03</span>
+<span style="font-size: 16px; font-weight: 800; color: #F74130; letter-spacing: 0.02em">STEP.03</span>
 <h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #222222; letter-spacing: -0.03em">송출 · 리포트</h3>
 <p style="margin: 0; font-size: 16px">발행 후 노출 결과를 리포트로 드립니다.</p>
 <div class="phone" style="margin: 26px auto 0; width: 220px; height: 250px; border: 9px solid #222222; border-bottom: 0; border-radius: 38px 38px 0 0; background: #ffffff; padding: 30px 16px 0; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 14px; font-weight: 800; color: #222222">결과 리포트</span>
-<div style="display: flex; align-items: flex-end; gap: 10px; height: 110px; padding: 10px 6px 0; border-bottom: 1px solid #EDEDED">
-<span class="gh gh1" style="flex: 1 1 0; height: 100%; border-radius: 6px 6px 0 0; background: #E4523D"></span>
-<span class="gh gh2" style="flex: 1 1 0; height: 100%; border-radius: 6px 6px 0 0; background: #E4523D"></span>
-<span class="gh gh3" style="flex: 1 1 0; height: 100%; border-radius: 6px 6px 0 0; background: #E4523D"></span>
-<span class="gh gh4" style="flex: 1 1 0; height: 60%; border-radius: 6px 6px 0 0; background: #222222"></span>
+<div style="display: flex; align-items: flex-end; gap: 10px; height: 143px; box-sizing: border-box; padding: 10px 6px 0; border-bottom: 1px solid #EDEDED">
+<span class="gh gh1" style="flex: 1 1 0; height: 100%; border-radius: 6px 6px 0 0; background: linear-gradient(104deg, #FF664D 0%, #ED3321 83.333%); box-shadow: inset 0 4px 8px rgba(255,255,255,0.35)"></span>
+<span class="gh gh2" style="flex: 1 1 0; height: 92px; border-radius: 6px 6px 0 0; background: linear-gradient(109deg, #FF664D 0%, #ED3321 83.333%); box-shadow: inset 0 4px 8px rgba(255,255,255,0.35)"></span>
+<span class="gh gh3" style="flex: 1 1 0; height: 100%; border-radius: 6px 6px 0 0; background: linear-gradient(104deg, #FF664D 0%, #ED3321 83.333%); box-shadow: inset 0 4px 8px rgba(255,255,255,0.35)"></span>
+<span class="gh gh4" style="flex: 1 1 0; height: 76px; border-radius: 6px 6px 0 0; background: #000000; box-shadow: inset 0 4px 8px rgba(255,255,255,0.35)"></span>
 </div>
-<span style="font-size: 11px; color: #767676; text-align: center">예시 화면</span>
 </div>
 </div>
 </div>
@@ -370,134 +392,143 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- STATS -->
-<section style="padding: 130px 24px; background: #ffffff">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+<section style="padding: 150px 24px; background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px">
 <div class="rv" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
-<div style="display: flex; flex-direction: column; gap: 18px">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">만족도 • 재계약</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.3">숫자로 증명하는<br>언론홍보</h2>
+<div style="display: flex; flex-direction: column; gap: 25px">
+<p class="eyebrow">만족도 • 재계약</p>
+<h2 class="ttl">숫자로 증명하는<br>언론홍보</h2>
 </div>
-<p style="margin: 0; font-size: 18px; line-height: 1.7; max-width: 420px">전문기자 1:1 전담으로<br>고객이 다시 찾는 언론홍보를 만듭니다.</p>
+<p class="lead">전문기자 1:1 전담으로<br>고객이 다시 찾는 언론홍보를 만듭니다.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
-<div class="rv card card-soft d1" style="background: #F6F6F6; border-radius: 28px; padding: 40px 32px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
+<div class="rv card card-soft d1" style="background: #F6F6F6; border-radius: 32px; padding: 39px 32px 40px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
 <span style="font-size: 17px; font-weight: 700; color: #555555">고객만족도</span>
-<span style="font-size: 64px; font-weight: 900; color: #E4523D; line-height: 1; letter-spacing: -0.05em"><span class="cnt" data-to="98">98</span><span style="font-size: 0.6em">%</span></span>
+<span style="font-size: 64px; font-weight: 900; color: #F74130; line-height: 1; letter-spacing: -0.05em"><span class="cnt" data-to="98">98</span><span style="font-size: 0.6em">%</span></span>
 </div>
-<div class="rv card card-soft d2" style="background: #F6F6F6; border-radius: 28px; padding: 40px 32px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
+<div class="rv card card-soft d2" style="background: #F6F6F6; border-radius: 32px; padding: 39px 32px 40px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
 <span style="font-size: 17px; font-weight: 700; color: #555555">재계약률</span>
-<span style="font-size: 64px; font-weight: 900; color: #E4523D; line-height: 1; letter-spacing: -0.05em"><span class="cnt" data-to="97">97</span><span style="font-size: 0.6em">%</span></span>
+<span style="font-size: 64px; font-weight: 900; color: #F74130; line-height: 1; letter-spacing: -0.05em"><span class="cnt" data-to="97">97</span><span style="font-size: 0.6em">%</span></span>
 </div>
-<div class="rv card card-soft d3" style="background: #F6F6F6; border-radius: 28px; padding: 40px 32px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
+<div class="rv card card-soft d3" style="background: #F6F6F6; border-radius: 32px; padding: 39px 32px 40px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
 <span style="font-size: 17px; font-weight: 700; color: #555555">전담기자 배정</span>
 <span style="font-size: 64px; font-weight: 900; color: #222222; line-height: 1; letter-spacing: -0.05em">1:1</span>
 </div>
-<div class="rv card d4" style="background: #222222; border-radius: 28px; padding: 40px 32px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
+<div class="rv card d4" style="background: #222222; border-radius: 32px; padding: 39px 32px 40px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 0 rgba(0,0,0,0)">
 <span style="font-size: 17px; font-weight: 700; color: #D6D6D6">원고 확정 후 당일 기사 송출</span>
-<span style="font-size: 64px; font-weight: 900; color: #ffffff; line-height: 1; letter-spacing: -0.05em"><span class="cnt" data-to="24">24</span><span style="font-size: 0.5em; color: #E4523D">시간</span></span>
+<span style="font-size: 64px; font-weight: 900; color: #ffffff; line-height: 1; letter-spacing: -0.05em"><span class="cnt" data-to="24">24</span><span style="font-size: 0.5em; color: #F74130">시간</span></span>
 </div>
 </div>
 <p style="margin: 0; font-size: 14px; color: #767676">* 고객만족도·재계약률 집계 기준 표기 자리 · 근거 확인 중 · 확정 전 비공개</p>
 </div>
 </section>
 
-<!-- 0원 BENEFIT -->
-<section style="padding: 130px 24px; background: #F6F6F6">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div class="rv" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">PRESS 기자증 발급</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.3">프리랜서 기자가 되면,<br>송출비용은 <span style="color: #E4523D">0원</span></h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.75">브랜드경제신문 기자로 등록하고 기자증(PRESS)을 받으세요.</p>
-<a class="btn btn-dark" href="#contact" data-product="프리랜서 기자모집" style="align-self: flex-start; margin-top: 6px; display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 28px; border-radius: 14px; background: #222222; color: #ffffff; font-size: 17px; font-weight: 800; text-decoration: none">프리랜서 기자 지원 문의
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
+<!-- OUR SERVICE -->
+<section style="padding: 150px 24px; background: #F6F6F6">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px">
+<div class="rv" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 25px">
+<p class="eyebrow">상품 안내</p>
+<h2 class="ttl" style="letter-spacing: 0">Our Service</h2>
 </div>
-<div style="flex: 1 1 380px; min-width: 0; display: flex; justify-content: center">
-<div class="rv lift zero-card d2" style="width: 320px; max-width: 100%; aspect-ratio: 1 / 1; background: #ffffff; border-radius: 40px; box-shadow: 0 24px 60px rgba(228,82,61,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px">
-<span class="zero" style="position: relative; font-size: 170px; font-weight: 900; line-height: 0.9; letter-spacing: -0.06em; color: #E4523D; text-shadow: 0 6px 0 #C8391F, 0 18px 30px rgba(200,57,31,0.35)">0<span class="won" style="position: absolute; right: -34px; bottom: 6px; width: 56px; height: 56px; border-radius: 50%; background: #222222; color: #ffffff; font-size: 24px; font-weight: 800; letter-spacing: 0; text-shadow: none; display: flex; align-items: center; justify-content: center">원</span></span>
-<span style="font-size: 18px; font-weight: 800; color: #222222">송출비용</span>
+<p class="lead">카드를 누르면 아래 문의폼에 해당 상품이 자동으로 체크됩니다.</p>
 </div>
-</div>
-</div>
-<div class="rv card" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 36px 40px; border-radius: 28px; background: #ffffff; box-shadow: 0 0 0 rgba(0,0,0,0)">
-<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1 1 420px">
-<span style="font-size: 15px; font-weight: 700; color: #C2381F">홈페이지 구축부터 운영까지</span>
-<span style="font-size: 26px; font-weight: 800; color: #222222; letter-spacing: -0.03em">언론사 창간 모집</span>
-<span style="font-size: 16px">언론사 홈페이지 구축, 기사 송출, 기자단 관리까지 한 번에 지원합니다.</span>
-</div>
-<a class="btn btn-red" href="#contact" data-product="언론사 창간" style="display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 28px; border-radius: 14px; background: #E4523D; color: #ffffff; font-size: 19px; font-weight: 800; text-decoration: none">창간 문의
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+
+<a href="#contact" data-product="홍보기사" class="rv card svc d1" style="text-decoration: none; color: inherit; min-height: 363px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 24px 27px 27px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
+<img class="svc-img" src="assets/img-megaphone.png" width="86" height="86" alt="" aria-hidden="true" style="align-self: flex-end; margin: 0 3px -2px 0; width: 86px; height: 86px; object-fit: contain">
+<span style="font-size: 23px; line-height: 36.8px; font-weight: 800; color: #222222; letter-spacing: -0.03em">홍보기사</span>
+<span style="font-size: 15px; line-height: 1.65">전문기자가 브랜드와 상품의 강점을<br>담은 홍보 기사를 작성해 송출합니다.</span>
+<span style="margin-top: auto; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: flex-start; font-size: 12px; line-height: 19.2px; font-weight: 600; color: #767676; background: #F6F6F6; border-radius: 999px; padding: 3px 12px 4px">설명 임시안</span>
+<span style="display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
+<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><img src="assets/ic-arrow-16.svg" width="16" height="16" alt="" aria-hidden="true"></span></span>
+</span>
+</a>
+
+<a href="#contact" data-product="지면기사" class="rv card svc d2" style="text-decoration: none; color: inherit; min-height: 363px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 24px 27px 27px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
+<img class="svc-img" src="assets/img-newspaper.png" width="86" height="86" alt="" aria-hidden="true" style="align-self: flex-end; margin: 0 3px -2px 0; width: 86px; height: 86px; object-fit: contain">
+<span style="font-size: 23px; line-height: 36.8px; font-weight: 800; color: #222222; letter-spacing: -0.03em">지면기사</span>
+<span style="font-size: 15px; line-height: 1.65">신문 지면에 브랜드 기사를<br>게재합니다.</span>
+<span style="margin-top: auto; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: flex-start; font-size: 12px; line-height: 19.2px; font-weight: 600; color: #767676; background: #F6F6F6; border-radius: 999px; padding: 3px 12px 4px">게재 매체 확인 중</span>
+<span style="display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
+<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><img src="assets/ic-arrow-16.svg" width="16" height="16" alt="" aria-hidden="true"></span></span>
+</span>
+</a>
+
+<a href="#contact" data-product="보도자료 배포" class="rv card svc d3" style="text-decoration: none; color: inherit; min-height: 363px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 24px 27px 27px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
+<img class="svc-img" src="assets/img-plane.png" width="86" height="86" alt="" aria-hidden="true" style="align-self: flex-end; margin: 0 3px -2px 0; width: 86px; height: 86px; object-fit: contain">
+<span style="font-size: 23px; line-height: 36.8px; font-weight: 800; color: #222222; letter-spacing: -0.03em">보도자료 배포</span>
+<span style="font-size: 15px; line-height: 1.65">언론사가 직접 기사를 작성해 포털과<br>제휴 매체에 동시 송출합니다.</span>
+<span style="margin-top: auto; display: flex; flex-direction: column; gap: 12px">
+<span style="display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
+<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><img src="assets/ic-arrow-16.svg" width="16" height="16" alt="" aria-hidden="true"></span></span>
+</span>
+</a>
+
+<a href="#contact" data-product="브랜드대상" class="rv card svc d4" style="text-decoration: none; color: inherit; min-height: 363px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 24px 27px 27px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
+<img class="svc-img" src="assets/img-trophy.png" width="86" height="86" alt="" aria-hidden="true" style="align-self: flex-end; margin: 0 3px -2px 0; width: 86px; height: 86px; object-fit: contain">
+<span style="font-size: 23px; line-height: 36.8px; font-weight: 800; color: #222222; letter-spacing: -0.03em">브랜드대상</span>
+<span style="font-size: 15px; line-height: 1.65">KBS N 브랜드 어워즈 등 브랜드대상<br>참여부터 수상 홍보까지 지원합니다.</span>
+<span style="margin-top: auto; display: flex; flex-direction: column; gap: 12px">
+<span style="display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
+<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><img src="assets/ic-arrow-16.svg" width="16" height="16" alt="" aria-hidden="true"></span></span>
+</span>
+</a>
 </div>
 </div>
 </section>
 
-<!-- OUR SERVICE -->
+<!-- BENEFIT: 프리랜서 기자 (0원) + 언론사 창간 -->
 <section style="padding: 130px 24px; background: #ffffff">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
-<div class="rv" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
-<div style="display: flex; flex-direction: column; gap: 18px">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">상품 안내</p>
-<h2 style="margin: 0; font-size: clamp(38px, 4.6vw, 58px); font-weight: 800; color: #222222; letter-spacing: -0.045em">Our Service</h2>
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px">
+
+<div class="rv" style="min-height: 418px; box-sizing: border-box; border-radius: 50px; background: #F74130; padding: 53px clamp(24px, 7.5vw, 109px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px">
+<div style="flex: 1 1 400px; max-width: 597px; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: #ffffff">
+<p class="eyebrow" style="color: #ffffff">PRESS 기자증 발급</p>
+<h2 class="ttl ttl-m" style="color: #ffffff">프리랜서 기자가 되면,<br>송출비용은 <span style="letter-spacing: 2px">0원</span></h2>
+<p class="lead" style="color: #ffffff">브랜드경제신문 기자로 등록하고 기자증(PRESS)을 받으세요.</p>
+<a class="btn btn-dark" href="#contact" data-product="프리랜서 기자모집" style="margin-top: 19px; display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 28px; border-radius: 14px; background: #222222; color: #ffffff; font-size: 17px; font-weight: 800; text-decoration: none">프리랜서 기자 지원 문의
+<img src="assets/ic-arrow-18.svg" width="18" height="18" alt="" aria-hidden="true"></a>
 </div>
-<p style="margin: 0; font-size: 16px">카드를 누르면 아래 문의폼에 해당 상품이 자동으로 체크됩니다.</p>
+<div class="lift zero-card" style="flex: 0 0 auto; width: 312px; max-width: 100%; aspect-ratio: 1 / 1; box-sizing: border-box; background: #ffffff; border-radius: 40px; box-shadow: 0 24px 60px rgba(228,82,61,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 13px">
+<span class="zero" style="position: relative; font-size: 170px; font-weight: 900; line-height: 0.9; letter-spacing: -0.06em; color: #F74130; text-shadow: 0 6px 0 #C8391F, 0 18px 30px rgba(200,57,31,0.35)">0<span class="won" style="position: absolute; right: -34px; bottom: 6px; width: 56px; height: 56px; border-radius: 50%; background: #222222; color: #ffffff; font-size: 24px; font-weight: 800; letter-spacing: 0; text-shadow: none; display: flex; align-items: center; justify-content: center">원</span></span>
+<span style="font-size: 18px; line-height: 28.8px; font-weight: 800; color: #222222">송출비용</span>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
-
-<a href="#contact" data-product="홍보기사" class="rv card svc d1" style="text-decoration: none; color: inherit; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 28px; padding: 36px 28px 28px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
-<span class="tile" style="width: 72px; height: 72px; border-radius: 22px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 50%, #C8391F 100%); box-shadow: 0 12px 24px rgba(200,57,31,0.28), inset 0 3px 8px rgba(255,255,255,0.35); color: #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; font-size: 22px; font-weight: 900; transform: rotate(-6deg)">01</span>
-<span style="font-size: 23px; font-weight: 800; color: #222222; letter-spacing: -0.03em">홍보기사</span>
-<span style="font-size: 15px; line-height: 1.65">전문기자가 브랜드와 상품의 강점을 담은 홍보 기사를 작성해 송출합니다.</span>
-
-<span style="align-self: flex-start; font-size: 12px; font-weight: 600; color: #767676; background: #F6F6F6; border-radius: 999px; padding: 4px 12px">설명 임시안</span>
-
-<span style="margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
-<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></span>
-</a>
-
-<a href="#contact" data-product="지면기사" class="rv card svc d2" style="text-decoration: none; color: inherit; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 28px; padding: 36px 28px 28px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
-<span class="tile" style="width: 72px; height: 72px; border-radius: 22px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 50%, #C8391F 100%); box-shadow: 0 12px 24px rgba(200,57,31,0.28), inset 0 3px 8px rgba(255,255,255,0.35); color: #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; font-size: 22px; font-weight: 900; transform: rotate(-6deg)">02</span>
-<span style="font-size: 23px; font-weight: 800; color: #222222; letter-spacing: -0.03em">지면기사</span>
-<span style="font-size: 15px; line-height: 1.65">신문 지면에 브랜드 기사를 게재합니다.</span>
-
-<span style="align-self: flex-start; font-size: 12px; font-weight: 600; color: #767676; background: #F6F6F6; border-radius: 999px; padding: 4px 12px">게재 매체 확인 중</span>
-
-<span style="margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
-<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></span>
-</a>
-
-<a href="#contact" data-product="보도자료 배포" class="rv card svc d3" style="text-decoration: none; color: inherit; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 28px; padding: 36px 28px 28px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
-<span class="tile" style="width: 72px; height: 72px; border-radius: 22px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 50%, #C8391F 100%); box-shadow: 0 12px 24px rgba(200,57,31,0.28), inset 0 3px 8px rgba(255,255,255,0.35); color: #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; font-size: 22px; font-weight: 900; transform: rotate(-6deg)">03</span>
-<span style="font-size: 23px; font-weight: 800; color: #222222; letter-spacing: -0.03em">보도자료 배포</span>
-<span style="font-size: 15px; line-height: 1.65">언론사가 직접 기사를 작성해 포털과 제휴 매체에 동시 송출합니다.</span>
-
-<span style="margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
-<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></span>
-</a>
-
-<a href="#contact" data-product="브랜드대상" class="rv card svc d4" style="text-decoration: none; color: inherit; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 28px; padding: 36px 28px 28px; box-shadow: 0 16px 44px rgba(0,0,0,0.06); display: flex; flex-direction: column; gap: 12px">
-<span class="tile" style="width: 72px; height: 72px; border-radius: 22px; background: linear-gradient(150deg, #FF8A6E 0%, #E4523D 50%, #C8391F 100%); box-shadow: 0 12px 24px rgba(200,57,31,0.28), inset 0 3px 8px rgba(255,255,255,0.35); color: #ffffff; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; font-size: 22px; font-weight: 900; transform: rotate(-6deg)">04</span>
-<span style="font-size: 23px; font-weight: 800; color: #222222; letter-spacing: -0.03em">브랜드대상</span>
-<span style="font-size: 15px; line-height: 1.65">KBS N 브랜드 어워즈 등 브랜드대상 참여부터 수상 홍보까지 지원합니다.</span>
-
-<span style="margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: #222222">문의하기
-<span class="go" style="width: 36px; height: 36px; border-radius: 50%; background: #F6F6F6; color: #222222; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></span></span>
-</a>
-
 </div>
+
+<div class="rv" style="min-height: 418px; box-sizing: border-box; border-radius: 50px; background: #222222; padding: 53px clamp(24px, 7.5vw, 109px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px">
+<div style="flex: 1 1 400px; max-width: 597px; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: #ffffff">
+<p class="eyebrow" style="color: #ffffff">언론사 창간 모집</p>
+<h2 class="ttl ttl-m" style="color: #ffffff">내 언론사 창간,<br>홈페이지부터 운영까지</h2>
+<p class="lead" style="color: #ffffff">언론사 홈페이지 구축, 기사 송출, 기자단 관리까지 한 번에 지원합니다.</p>
+<a class="btn btn-red" href="#contact" data-product="언론사 창간" style="margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; min-height: 56px; padding: 0 28px; border-radius: 14px; background: #F74130; color: #ffffff; font-family: 'Noto Sans KR', sans-serif; font-size: 17px; font-weight: 700; text-decoration: none">언론사 창간 문의
+<img src="assets/ic-arrow-18.svg" width="18" height="18" alt="" aria-hidden="true"></a>
+</div>
+<div class="lift" style="flex: 0 0 auto; width: 312px; max-width: 100%; aspect-ratio: 1 / 1; box-sizing: border-box; background: #ffffff; border-radius: 40px; box-shadow: 0 24px 60px rgba(228,82,61,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 13px">
+<span style="position: relative; display: block; width: 184px; height: 184px">
+<img src="assets/img-newspaper.png" width="184" height="184" alt="" style="display: block; width: 184px; height: 184px; object-fit: cover">
+<span style="position: absolute; right: -10px; bottom: 2px; width: 56px; height: 56px; border-radius: 50%; background: #222222; display: flex; align-items: center; justify-content: center"><img src="assets/ic-house.svg" width="26" height="26" alt="" aria-hidden="true"></span>
+</span>
+<span style="font-family: 'Noto Sans KR', sans-serif; font-size: 18px; line-height: 28.8px; font-weight: 900; color: #222222">창간 지원</span>
+</div>
+</div>
+
 </div>
 </section>
 
 <!-- ARTICLE TYPES -->
-<section id="types" style="padding: 130px 24px; background: #F6F6F6">
+<section id="types" style="padding: 150px 24px; background: #F6F6F6">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
-<div class="rv" style="display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">Article Types</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em">기사 유형 및 예시</h2>
-<p style="margin: 0; font-size: 18px">브랜드 소식의 성격에 맞는 기사 유형을 제안해 드립니다.</p>
+<div class="rv" style="display: flex; flex-direction: column; align-items: center; gap: 25px; text-align: center">
+<p class="eyebrow">Article Types</p>
+<h2 class="ttl">기사 유형 및 예시</h2>
+<p class="lead">브랜드 소식의 성격에 맞는 기사 유형을 제안해 드립니다.</p>
 </div>
 <div role="tablist" aria-label="기사 유형" class="rv d1" style="align-self: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 6px; border-radius: 999px; background: #ffffff; box-shadow: 0 6px 20px rgba(0,0,0,0.05)">
 
-<button type="button" data-tab="0" role="tab" class="tab" aria-selected="true" style="min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: #E4523D; color: #ffffff; font-weight: 800">보도자료</button>
+<button type="button" data-tab="0" role="tab" class="tab" aria-selected="true" style="min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: #F74130; color: #ffffff; font-weight: 800">보도자료</button>
 
 <button type="button" data-tab="1" role="tab" class="tab" aria-selected="false" style="min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: transparent; color: #555555; font-weight: 600">기획기사</button>
 
@@ -514,16 +545,17 @@ html{scroll-behavior:smooth}
 </div>
 <div class="rv preview d2" style="background: #ffffff; border-radius: 32px; padding: 32px; box-sizing: border-box; box-shadow: 0 16px 44px rgba(0,0,0,0.05)">
 <div id="swap" style="display: flex; flex-wrap: wrap; gap: 40px">
-<div style="flex: 1 1 380px; min-width: 0; min-height: 320px; border-radius: 22px; overflow: hidden; background: #F1F1F1">
-<div class="ph-img" style="width: 100%; height: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; color: #767676; font-size: 15px; padding: 20px; box-sizing: border-box">[<span data-cur="label">보도자료</span> 기사 이미지 · 실제 기사 캡처로 교체]</div>
+<div style="flex: 1 1 380px; max-width: 568px; min-width: 0; min-height: 360px; box-sizing: border-box; border: 1px solid #ECECEC; border-radius: 22px; overflow: hidden; background: #F1F1F1; position: relative">
+<img id="type-img" class="ph-img" src="assets/article-press.jpg" alt="브랜드경제신문 보도자료 기사 예시 캡처" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block">
+<div id="type-ph" class="ph-img" style="width: 100%; height: 100%; min-height: 358px; display: none; align-items: center; justify-content: center; text-align: center; color: #767676; font-size: 15px; padding: 20px; box-sizing: border-box">[<span data-cur="label">보도자료</span> 기사 이미지 · 실제 기사 캡처로 교체]</div>
 </div>
-<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 14px; justify-content: center">
-<span style="align-self: flex-start; padding: 6px 14px; border-radius: 999px; background: #FDEDEA; color: #C2381F; font-size: 14px; font-weight: 800"><span data-cur="label">보도자료</span></span>
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 12.9px; justify-content: center">
+<span style="align-self: flex-start; padding: 5.5px 14px 5.9px; border-radius: 999px; background: #FDEDEA; color: #F74130; font-size: 14px; line-height: 22.4px; font-weight: 800"><span data-cur="label">보도자료</span></span>
 <h3 style="margin: 0; font-size: 28px; font-weight: 800; color: #222222; line-height: 1.4; letter-spacing: -0.035em"><span data-cur="head">신제품 출시·협약·수상 등 회사 소식을 기사로</span></h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.8"><span data-cur="body">회사의 새로운 소식을 언론 보도 형식으로 정리해 송출합니다. 출시 일정, 핵심 기능, 대표 코멘트를 담아 검색 결과에 공식 정보로 남깁니다.</span></p>
-<p style="margin: 0; font-size: 13px; color: #767676">실제 기사로 교체 예정 · 샘플 문구</p>
-<a class="btn btn-dark" href="https://benews.co.kr" style="align-self: flex-start; margin-top: 6px; display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border-radius: 14px; background: #222222; color: #ffffff; font-size: 15px; font-weight: 800; text-decoration: none">benews.co.kr 기사 보기
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
+<p style="margin: 0; font-family: 'Noto Sans KR', sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: -0.02em; color: #767676"><span data-cur="note">예시 기사 · “AI 구축부터 교육까지 한 번에”… 데이원컴퍼니, 기업 AX 통합 서비스 브랜드 ‘DAY1 AX’ 출범</span></p>
+<a class="btn btn-dark" href="https://benews.co.kr" style="align-self: flex-start; margin-top: 7px; display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border-radius: 14px; background: #222222; color: #ffffff; font-size: 15px; font-weight: 800; text-decoration: none">benews.co.kr 기사 보기
+<img src="assets/ic-arrow-16b.svg" width="16" height="16" alt="" aria-hidden="true"></a>
 </div>
 </div>
 </div>
@@ -531,14 +563,14 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- REPORT -->
-<section style="padding: 130px 24px; background: #ffffff">
-<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div class="rv" style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">보도로 끝나지 않습니다</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.3">결과까지<br><span style="color: #E4523D">리포트</span>로</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.75">기사 송출 후 노출 현황과 반응을<br>한눈에 볼 수 있도록 결과 리포트를 드립니다.</p>
+<section style="padding: 150px 24px; background: #ffffff">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 56px 40px">
+<div class="rv" style="flex: 1 1 360px; max-width: 405px; min-width: 0; display: flex; flex-direction: column; gap: 25px">
+<p class="eyebrow">보도로 끝나지 않습니다</p>
+<h2 class="ttl">결과까지<br>리포트로</h2>
+<p class="lead">기사 송출 후 노출 현황과 반응을<br>한눈에 볼 수 있도록 결과 리포트를 드립니다.</p>
 </div>
-<div class="rv lift d2" style="flex: 1 1 480px; min-width: 0; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 40px; box-shadow: 0 24px 60px rgba(228,82,61,0.14); display: flex; flex-direction: column; gap: 24px">
+<div class="rv lift d2" style="flex: 0 1 643px; min-width: 0; min-height: 506px; box-sizing: border-box; background: #ffffff; border: 1px solid #F1F1F1; border-radius: 32px; padding: 40px; box-shadow: 0 24px 60px rgba(228,82,61,0.14); display: flex; flex-direction: column; gap: 24px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
 <span style="font-size: 21px; font-weight: 800; color: #222222">송출 결과 리포트</span>
 <span style="font-size: 12px; font-weight: 600; color: #767676; background: #F6F6F6; border-radius: 999px; padding: 4px 12px">예시 화면</span>
@@ -546,22 +578,22 @@ html{scroll-behavior:smooth}
 
 <div style="display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 16px"><span style="color: #333333; font-weight: 600">송출 성공률</span><span style="font-size: 22px; color: #222222; font-weight: 900; letter-spacing: -0.03em"><span class="cnt" data-to="100">100</span>%</span></div>
-<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd1" style="height: 100%; width: 100%; border-radius: 999px; background: #E4523D; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
+<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd1" style="height: 100%; width: 100%; border-radius: 999px; background: #F74130; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 16px"><span style="color: #333333; font-weight: 600">제목 일치율</span><span style="font-size: 22px; color: #222222; font-weight: 900; letter-spacing: -0.03em"><span class="cnt" data-to="100">100</span>%</span></div>
-<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd2" style="height: 100%; width: 100%; border-radius: 999px; background: #E4523D; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
+<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd2" style="height: 100%; width: 100%; border-radius: 999px; background: #F74130; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 16px"><span style="color: #333333; font-weight: 600">핵심문구 반영률</span><span style="font-size: 22px; color: #222222; font-weight: 900; letter-spacing: -0.03em"><span class="cnt" data-to="100">100</span>%</span></div>
-<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd3" style="height: 100%; width: 100%; border-radius: 999px; background: #E4523D; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
+<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd3" style="height: 100%; width: 100%; border-radius: 999px; background: #F74130; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 16px"><span style="color: #333333; font-weight: 600">포털 노출률</span><span style="font-size: 22px; color: #222222; font-weight: 900; letter-spacing: -0.03em"><span class="cnt" data-to="60">60</span>%</span></div>
-<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd4" style="height: 100%; width: 60%; border-radius: 999px; background: #E4523D; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
+<div style="height: 12px; border-radius: 999px; background: #F3F3F3; overflow: hidden"><div class="bar bd4" style="height: 100%; width: 60%; border-radius: 999px; background: #F74130; box-shadow: 0 0 12px rgba(228,82,61,0.45)"></div></div>
 </div>
 
 <p style="margin: 0; font-size: 13px; color: #767676; line-height: 1.6">2026년 9월 송출 5건 자동 점검 기준 · 포털 노출은 네이버·다음·네이트 기준이며 구글은 자동 접근 차단으로 집계에서 제외했습니다.</p>
@@ -571,58 +603,57 @@ html{scroll-behavior:smooth}
 
 <!-- CONTACT -->
 <section id="contact" style="padding: 130px 24px; background: #F6F6F6">
-<div style="max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 48px">
-<div class="rv" style="display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
-<p style="margin: 0; font-size: 20px; font-weight: 700; color: #E4523D">Contact Us</p>
-<h2 style="margin: 0; font-size: clamp(34px, 4.2vw, 52px); font-weight: 800; color: #222222; letter-spacing: -0.045em; line-height: 1.3">맞춤 언론홍보 전략,<br>무료로 상담받으세요.</h2>
+<div style="max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 50px">
+<div class="rv" style="display: flex; flex-direction: column; align-items: center; gap: 25px; text-align: center">
+<p class="eyebrow">Contact Us</p>
+<h2 class="ttl">맞춤 언론홍보 전략,<br>무료로 상담받으세요.</h2>
 </div>
 <form class="rv d1" style="background: #ffffff; border-radius: 32px; padding: 48px 44px; box-shadow: 0 16px 44px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 44px">
 <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; margin-bottom: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px"><span style="font-size: 15px; font-weight: 800; color: #C2381F">STEP.01</span><span style="font-size: 21px; font-weight: 800; color: #222222">기본정보</span><span style="font-size: 14px; color: #767676">연락을 드릴 수 있도록 담당자 정보를 남겨 주세요.</span></legend>
+<legend style="padding: 0; margin-bottom: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px"><span style="font-size: 15px; font-weight: 800; color: #F74130">STEP.01</span><span style="font-size: 21px; font-weight: 800; color: #222222">기본정보</span><span style="flex-basis: 100%; font-size: 14px; color: #767676">연락을 드릴 수 있도록 담당자 정보를 남겨 주세요.</span></legend>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px">
-<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">회사명 *<input class="fi" type="text" required placeholder="회사명을 입력해 주세요" style="height: 56px; padding: 0 18px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
-<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">담당자명 *<input class="fi" type="text" required placeholder="담당자명을 입력해 주세요" style="height: 56px; padding: 0 18px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
-<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">연락처 *<input class="fi" type="tel" required placeholder="- 제외 숫자만" style="height: 56px; padding: 0 18px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
-<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">이메일<input class="fi" type="email" placeholder="example@company.com" style="height: 56px; padding: 0 18px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">회사명 *<input class="fi" type="text" required placeholder="회사명을 입력해 주세요" style="height: 58px; padding: 0 19px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">담당자명 *<input class="fi" type="text" required placeholder="담당자명을 입력해 주세요" style="height: 58px; padding: 0 19px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">연락처 *<input class="fi" type="tel" required placeholder="- 제외 숫자만" style="height: 58px; padding: 0 19px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222">이메일<input class="fi" type="email" placeholder="example@company.com" style="height: 58px; padding: 0 19px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; background: #FAFAFA"></label>
 </div>
 </fieldset>
 
 <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; margin-bottom: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px"><span style="font-size: 15px; font-weight: 800; color: #C2381F">STEP.02</span><span style="font-size: 21px; font-weight: 800; color: #222222">문의 내용</span><span style="font-size: 14px; color: #767676">관심 있는 상품과 궁금한 점을 알려 주세요.</span></legend>
-<p style="margin: 0; font-size: 14px; font-weight: 700; color: #222222">관심 상품 <span style="font-weight: 500; color: #767676">· 복수 선택 가능</span></p>
+<legend style="padding: 0; margin-bottom: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px"><span style="font-size: 15px; font-weight: 800; color: #F74130">STEP.02</span><span style="font-size: 21px; font-weight: 800; color: #222222">문의 내용</span><span style="flex-basis: 100%; font-size: 14px; color: #767676">관심 있는 상품과 궁금한 점을 알려 주세요. <b style="font-weight: 700">관심 상품</b> · 복수 선택 가능</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 
-<label class="chip" data-label="홍보기사" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>홍보기사</span></label>
+<label class="chip" data-label="홍보기사" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>홍보기사</span></label>
 
-<label class="chip" data-label="지면기사" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>지면기사</span></label>
+<label class="chip" data-label="지면기사" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>지면기사</span></label>
 
-<label class="chip" data-label="보도자료 배포" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>보도자료 배포</span></label>
+<label class="chip" data-label="보도자료 배포" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>보도자료 배포</span></label>
 
-<label class="chip" data-label="브랜드대상" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>브랜드대상</span></label>
+<label class="chip" data-label="브랜드대상" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>브랜드대상</span></label>
 
-<label class="chip" data-label="프리랜서 기자모집" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>프리랜서 기자모집</span></label>
+<label class="chip" data-label="프리랜서 기자모집" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>프리랜서 기자모집</span></label>
 
-<label class="chip" data-label="언론사 창간" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>언론사 창간</span></label>
+<label class="chip" data-label="언론사 창간" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>언론사 창간</span></label>
 
-<label class="chip" data-label="기타" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>기타</span></label>
+<label class="chip" data-label="기타" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600"><input type="checkbox" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>기타</span></label>
 
 </div>
 <label style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; color: #222222; margin-top: 8px">문의 내용<textarea class="fi" rows="5" placeholder="궁금한 점을 자유롭게 작성해 주세요." style="padding: 16px 18px; border: 1px solid #E6E6E6; border-radius: 14px; font-size: 16px; color: #222222; resize: vertical; background: #FAFAFA"></textarea></label>
 </fieldset>
 
 <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
-<legend style="padding: 0; margin-bottom: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px"><span style="font-size: 15px; font-weight: 800; color: #C2381F">STEP.03</span><span style="font-size: 21px; font-weight: 800; color: #222222">방문 경로</span><span style="font-size: 14px; color: #767676">어떻게 방문하셨는지 알려 주시면 상담에 도움이 됩니다.</span></legend>
+<legend style="padding: 0; margin-bottom: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px"><span style="font-size: 15px; font-weight: 800; color: #F74130">STEP.03</span><span style="font-size: 21px; font-weight: 800; color: #222222">방문 경로</span><span style="flex-basis: 100%; font-size: 14px; color: #767676">어떻게 방문하셨는지 알려 주시면 상담에 도움이 됩니다.</span></legend>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
-<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>네이버</span></label>
-<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>구글</span></label>
-<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>지인 소개</span></label>
-<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D"><span>기타</span></label>
+<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>네이버</span></label>
+<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>구글</span></label>
+<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>지인 소개</span></label>
+<label class="chip" style="display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border: 1px solid #E6E6E6; border-radius: 999px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="radio" name="visit" style="width: 18px; height: 18px; margin: 0; accent-color: #F74130"><span>기타</span></label>
 </div>
 </fieldset>
 
 <div style="display: flex; flex-direction: column; gap: 18px; padding-top: 28px; border-top: 1px solid #F1F1F1">
-<label style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="checkbox" required style="width: 18px; height: 18px; margin: 0; accent-color: #E4523D">개인정보 수집·이용에 동의합니다. <span style="color: #C2381F; font-weight: 800">(필수)</span></label>
-<button class="btn btn-red" type="button" style="width: 100%; min-height: 66px; border: 0; border-radius: 16px; background: #E4523D; color: #ffffff; font-size: 20px; font-weight: 800; cursor: pointer; box-shadow: 0 14px 30px rgba(228,82,61,0.30)">무료 상담 신청하기</button>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #222222; cursor: pointer"><input type="checkbox" required style="width: 18px; height: 18px; margin: 0; accent-color: #F74130">개인정보 수집·이용에 동의합니다. <span style="color: #F74130; font-weight: 800">(필수)</span></label>
+<button class="btn btn-red" type="button" style="width: 100%; min-height: 66px; border: 0; border-radius: 16px; background: #F74130; color: #ffffff; font-size: 20px; font-weight: 800; cursor: pointer; box-shadow: 0 14px 30px rgba(228,82,61,0.30)">무료 상담 신청하기</button>
 <p style="margin: 0; font-size: 13px; color: #767676; text-align: center">샘플 폼입니다 · 실제 접수되지 않습니다</p>
 </div>
 </form>
@@ -630,7 +661,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- FOOTER -->
-<footer style="background: #222222; color: #B5B5B5; padding: 60px 24px 120px">
+<footer style="background: #222222; color: #B5B5B5; padding: 60px 24px 130px">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 36px">
 <div style="display: flex; flex-direction: column; gap: 18px">
 <span style="display: flex; align-items: center; gap: 8px"><span style="font-size: 26px; font-weight: 900; color: #ffffff; letter-spacing: -0.05em">mediahub</span><span style="font-size: 14px; font-weight: 600; color: #B5B5B5">미디어허브</span></span>
@@ -649,15 +680,15 @@ html{scroll-behavior:smooth}
 </footer>
 
 <!-- FLOATING CTA -->
-<div style="position: sticky; bottom: 20px; z-index: 60; padding: 0 20px; display: flex; justify-content: flex-end; pointer-events: none">
-<a class="cta" href="#contact" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 12px; min-height: 64px; padding: 8px 26px 8px 8px; border-radius: 999px; background: #E4523D; color: #ffffff; text-decoration: none; box-shadow: 0 16px 36px rgba(200,57,31,0.40)">
-<span style="position: relative; width: 48px; height: 48px; border-radius: 50%; background: #ffffff; color: #E4523D; display: flex; align-items: center; justify-content: center">
+<div style="position: sticky; bottom: 20px; z-index: 60; padding: 0 clamp(20px, 3.65vw, 70px) 0 20px; display: flex; justify-content: flex-end; pointer-events: none">
+<a class="cta" href="#contact" style="pointer-events: auto; display: inline-flex; align-items: center; gap: 12px; min-height: 80px; box-sizing: border-box; padding: 8px 26px 8px 16px; border-radius: 999px; background: #F74130; color: #ffffff; text-decoration: none; box-shadow: 0 16px 36px rgba(200,57,31,0.40)">
+<span style="position: relative; width: 48px; height: 48px; border-radius: 50%; background: #ffffff; color: #F74130; display: flex; align-items: center; justify-content: center">
 <span class="ring" aria-hidden="true"></span>
-<svg class="phi" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>
+<img class="phi" src="assets/ic-phone.svg" width="22" height="22" alt="" aria-hidden="true">
 </span>
 <span style="display: flex; flex-direction: column; line-height: 1.25">
-<span style="font-size: 13px; font-weight: 700">무료 상담 신청하기</span>
-<span style="font-size: 20px; font-weight: 900; letter-spacing: -0.01em">010-4559-5049</span>
+<span style="font-size: 13px; line-height: 16.25px; font-weight: 700">무료 상담 신청하기</span>
+<span style="font-size: 20px; line-height: 25px; font-weight: 900; letter-spacing: -0.01em">010-4559-5049</span>
 </span>
 </a>
 </div>
@@ -702,8 +733,9 @@ html{scroll-behavior:smooth}
   }
 
   /* article type tabs */
-  var TABS = [{"label": "보도자료", "head": "신제품 출시·협약·수상 등 회사 소식을 기사로", "body": "회사의 새로운 소식을 언론 보도 형식으로 정리해 송출합니다. 출시 일정, 핵심 기능, 대표 코멘트를 담아 검색 결과에 공식 정보로 남깁니다."}, {"label": "기획기사", "head": "[기획기사 예시 제목]", "body": "[기획기사 유형 설명 입력]"}, {"label": "인터뷰", "head": "[인터뷰 예시 제목]", "body": "[인터뷰 유형 설명 입력]"}, {"label": "연재기사", "head": "[연재기사 예시 제목]", "body": "[연재기사 유형 설명 입력]"}, {"label": "칼럼", "head": "[칼럼 예시 제목]", "body": "[칼럼 유형 설명 입력]"}, {"label": "라운드업", "head": "[라운드업 예시 제목]", "body": "[라운드업 유형 설명 입력]"}, {"label": "브랜드대상", "head": "[브랜드대상 예시 제목]", "body": "[브랜드대상 유형 설명 입력]"}];
-  var TAB_ON = "min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: #E4523D; color: #ffffff; font-weight: 800", TAB_OFF = "min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: transparent; color: #555555; font-weight: 600";
+  var NOTE = "실제 기사로 교체 예정 · 샘플 문구";
+  var TABS = [{"label": "보도자료", "head": "신제품 출시·협약·수상 등 회사 소식을 기사로", "body": "회사의 새로운 소식을 언론 보도 형식으로 정리해 송출합니다. 출시 일정, 핵심 기능, 대표 코멘트를 담아 검색 결과에 공식 정보로 남깁니다.", "note": "예시 기사 · “AI 구축부터 교육까지 한 번에”… 데이원컴퍼니, 기업 AX 통합 서비스 브랜드 ‘DAY1 AX’ 출범", "img": "assets/article-press.jpg", "alt": "브랜드경제신문 보도자료 기사 예시 캡처"}, {"label": "기획기사", "head": "[기획기사 예시 제목]", "body": "[기획기사 유형 설명 입력]", "note": NOTE}, {"label": "인터뷰", "head": "[인터뷰 예시 제목]", "body": "[인터뷰 유형 설명 입력]", "note": NOTE}, {"label": "연재기사", "head": "[연재기사 예시 제목]", "body": "[연재기사 유형 설명 입력]", "note": NOTE}, {"label": "칼럼", "head": "[칼럼 예시 제목]", "body": "[칼럼 유형 설명 입력]", "note": NOTE}, {"label": "라운드업", "head": "[라운드업 예시 제목]", "body": "[라운드업 유형 설명 입력]", "note": NOTE}, {"label": "브랜드대상", "head": "[브랜드대상 예시 제목]", "body": "[브랜드대상 유형 설명 입력]", "note": NOTE}];
+  var TAB_ON = "min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: #F74130; color: #ffffff; font-weight: 800", TAB_OFF = "min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: transparent; color: #555555; font-weight: 600";
   var swap = document.getElementById('swap'), swapN = 0, current = 0;
   var tabBtns = document.querySelectorAll('[data-tab]');
   Array.prototype.forEach.call(tabBtns, function (btn) {
@@ -717,15 +749,19 @@ html{scroll-behavior:smooth}
         b.setAttribute('style', on ? TAB_ON : TAB_OFF);
       });
       Array.prototype.forEach.call(document.querySelectorAll('[data-cur]'), function (n) {
-        n.textContent = TABS[i][n.getAttribute('data-cur')];
+        n.textContent = TABS[i][n.getAttribute('data-cur')] || '';
       });
+      /* 기사 캡처 이미지가 있는 유형은 이미지, 없으면 교체 안내 자리 표시 */
+      var tImg = document.getElementById('type-img'), tPh = document.getElementById('type-ph');
+      if (TABS[i].img) { tImg.src = TABS[i].img; tImg.alt = TABS[i].alt || ''; tImg.style.display = 'block'; tPh.style.display = 'none'; }
+      else { tImg.style.display = 'none'; tPh.style.display = 'flex'; }
       swapN++;
       swap.className = swapN % 2 ? 'swA' : 'swB';
     });
   });
 
   /* interest chips + auto-check from cards */
-  var CH_ON = "display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1.5px solid #E4523D; background: #FDF0EE; color: #222222; font-weight: 800", CH_OFF = "display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600";
+  var CH_ON = "display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1.5px solid #F74130; background: #FDF0EE; color: #222222; font-weight: 800", CH_OFF = "display: flex; align-items: center; gap: 8px; min-height: 50px; padding: 0 21px; border-radius: 999px; font-size: 15px; cursor: pointer; border: 1px solid #E6E6E6; background: #ffffff; color: #222222; font-weight: 600";
   function paint(label) {
     var box = label.querySelector('input');
     label.setAttribute('style', box.checked ? CH_ON : CH_OFF);
