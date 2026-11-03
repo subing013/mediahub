@@ -514,15 +514,15 @@ html{scroll-behavior:smooth}
 </div>
 <div class="rv preview d2" style="background: #ffffff; border-radius: 32px; padding: 32px; box-sizing: border-box; box-shadow: 0 16px 44px rgba(0,0,0,0.05)">
 <div id="swap" style="display: flex; flex-wrap: wrap; gap: 40px">
-<div style="flex: 1 1 380px; min-width: 0; min-height: 320px; border-radius: 22px; overflow: hidden; background: #F1F1F1">
-<div class="ph-img" style="width: 100%; height: 100%; min-height: 320px; display: flex; align-items: center; justify-content: center; text-align: center; color: #767676; font-size: 15px; padding: 20px; box-sizing: border-box">[<span data-cur="label">보도자료</span> 기사 이미지 · 실제 기사 캡처로 교체]</div>
+<div style="flex: 1 1 380px; min-width: 0; min-height: 320px; border-radius: 22px; overflow: hidden; background: #F1F1F1; border: 1px solid #ECECEC">
+<a data-cur-href href="https://www.benews.co.kr/news/578347" target="_blank" rel="noopener" style="display: block; width: 100%; height: 100%"><img class="ph-img" data-cur-img src="img/articles/press.jpg" alt="“AI 구축부터 교육까지 한 번에”… 데이원컴퍼니, 기업 AX 통합 서비스 브랜드 ‘DAY1 AX’ 출범" style="display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; object-position: top center"></a>
 </div>
 <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 14px; justify-content: center">
 <span style="align-self: flex-start; padding: 6px 14px; border-radius: 999px; background: #FDEDEA; color: #C2381F; font-size: 14px; font-weight: 800"><span data-cur="label">보도자료</span></span>
 <h3 style="margin: 0; font-size: 28px; font-weight: 800; color: #222222; line-height: 1.4; letter-spacing: -0.035em"><span data-cur="head">신제품 출시·협약·수상 등 회사 소식을 기사로</span></h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.8"><span data-cur="body">회사의 새로운 소식을 언론 보도 형식으로 정리해 송출합니다. 출시 일정, 핵심 기능, 대표 코멘트를 담아 검색 결과에 공식 정보로 남깁니다.</span></p>
-<p style="margin: 0; font-size: 13px; color: #767676">실제 기사로 교체 예정 · 샘플 문구</p>
-<a class="btn btn-dark" href="https://benews.co.kr" style="align-self: flex-start; margin-top: 6px; display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border-radius: 14px; background: #222222; color: #ffffff; font-size: 15px; font-weight: 800; text-decoration: none">benews.co.kr 기사 보기
+<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #767676">예시 기사 · <span data-cur="title">“AI 구축부터 교육까지 한 번에”… 데이원컴퍼니, 기업 AX 통합 서비스 브랜드 ‘DAY1 AX’ 출범</span></p>
+<a class="btn btn-dark" data-cur-href href="https://www.benews.co.kr/news/578347" target="_blank" rel="noopener" style="align-self: flex-start; margin-top: 6px; display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 0 24px; border-radius: 14px; background: #222222; color: #ffffff; font-size: 15px; font-weight: 800; text-decoration: none">benews.co.kr 기사 보기
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></a>
 </div>
 </div>
@@ -702,7 +702,16 @@ html{scroll-behavior:smooth}
   }
 
   /* article type tabs */
-  var TABS = [{"label": "보도자료", "head": "신제품 출시·협약·수상 등 회사 소식을 기사로", "body": "회사의 새로운 소식을 언론 보도 형식으로 정리해 송출합니다. 출시 일정, 핵심 기능, 대표 코멘트를 담아 검색 결과에 공식 정보로 남깁니다."}, {"label": "기획기사", "head": "[기획기사 예시 제목]", "body": "[기획기사 유형 설명 입력]"}, {"label": "인터뷰", "head": "[인터뷰 예시 제목]", "body": "[인터뷰 유형 설명 입력]"}, {"label": "연재기사", "head": "[연재기사 예시 제목]", "body": "[연재기사 유형 설명 입력]"}, {"label": "칼럼", "head": "[칼럼 예시 제목]", "body": "[칼럼 유형 설명 입력]"}, {"label": "라운드업", "head": "[라운드업 예시 제목]", "body": "[라운드업 유형 설명 입력]"}, {"label": "브랜드대상", "head": "[브랜드대상 예시 제목]", "body": "[브랜드대상 유형 설명 입력]"}];
+  var TABS = [
+    {"label": "보도자료", "head": "신제품 출시·협약·수상 등 회사 소식을 기사로", "body": "회사의 새로운 소식을 언론 보도 형식으로 정리해 송출합니다. 출시 일정, 핵심 기능, 대표 코멘트를 담아 검색 결과에 공식 정보로 남깁니다.", "title": "“AI 구축부터 교육까지 한 번에”… 데이원컴퍼니, 기업 AX 통합 서비스 브랜드 ‘DAY1 AX’ 출범", "img": "img/articles/press.jpg", "url": "https://www.benews.co.kr/news/578347"},
+    {"label": "기획기사", "head": "업계 흐름 속에 브랜드를 자리매김하는 기사", "body": "시장 트렌드와 이슈를 짚는 기획 기사 안에 브랜드의 사례와 강점을 담습니다. 단순 소식보다 깊이 있는 맥락으로 업계 내 위치를 보여 줍니다.", "title": "[2027 K-뷰티 대전망①] 화장품의 미래가 바뀐다…글로벌 시장 뒤흔들 5대 트렌드", "img": "img/articles/feature.jpg", "url": "https://www.benews.co.kr/news/569249"},
+    {"label": "인터뷰", "head": "대표의 목소리로 전하는 브랜드 이야기", "body": "창업 계기와 철학, 서비스의 차별점을 일문일답으로 풀어냅니다. 사람이 보이는 기사로 고객에게 신뢰를 쌓습니다.", "title": "[인터뷰] “원장은 수업만 하세요”…에이아이씨씨(AICC) 길민선 대표가 만든 매장관리 AI", "img": "img/articles/interview.jpg", "url": "https://www.benews.co.kr/news/568824"},
+    {"label": "연재기사", "head": "한 주제를 회차로 이어 가는 시리즈 기사", "body": "전문 분야의 노하우를 여러 편에 나눠 꾸준히 발행합니다. 회차가 쌓일수록 검색 노출과 전문가 이미지가 함께 커집니다.", "title": "[장사·사업의 성공 비결] 기획시리즈 ② “매출은 높은데 왜 돈이 없을까”… 장사의 성패를 가르는 이익의 비밀", "img": "img/articles/series.jpg", "url": "https://www.benews.co.kr/news/578171"},
+    {"label": "칼럼", "head": "전문가 시각을 담은 기명 칼럼", "body": "대표나 실무 전문가의 이름으로 업계 인사이트를 전합니다. 브랜드를 해당 분야의 전문가로 각인시키는 데 효과적입니다.", "title": "[페르소나인사이트칼럼⑱] 60초의 유혹, 쇼츠는 어떻게 인간의 뇌를 사로잡는가", "img": "img/articles/column.jpg", "url": "https://www.benews.co.kr/news/578037"},
+    {"label": "라운드업", "head": "여러 곳을 한 번에 소개하는 추천형 기사", "body": "지역·코스·카테고리별로 주목할 곳을 묶어 소개합니다. 비교·추천 검색에서 브랜드가 함께 노출되도록 돕습니다.", "title": "서오릉 풀코스 맛집 추천…장어대장 참숯구이부터 이송당카페까지 한번에", "img": "img/articles/roundup.jpg", "url": "https://www.benews.co.kr/news/572740"},
+    {"label": "브랜드대상", "head": "수상 소식으로 공신력을 더하는 기사", "body": "브랜드대상 수상 내용과 브랜드의 철학, 강점을 기사로 정리합니다. 검색 결과에 공식 수상 이력이 남아 신뢰도를 높입니다.", "title": "언더식스, ‘2026 K-우수브랜드대상’ 안국동 브런치 카페 부문 수상", "img": "img/articles/award.jpg", "url": "https://www.benews.co.kr/news/578324"}
+  ];
+  TABS.forEach(function (t) { new Image().src = t.img; });
   var TAB_ON = "min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: #E4523D; color: #ffffff; font-weight: 800", TAB_OFF = "min-height: 46px; padding: 0 20px; border: 0; border-radius: 999px; font-size: 15px; cursor: pointer; background: transparent; color: #555555; font-weight: 600";
   var swap = document.getElementById('swap'), swapN = 0, current = 0;
   var tabBtns = document.querySelectorAll('[data-tab]');
@@ -719,6 +728,10 @@ html{scroll-behavior:smooth}
       Array.prototype.forEach.call(document.querySelectorAll('[data-cur]'), function (n) {
         n.textContent = TABS[i][n.getAttribute('data-cur')];
       });
+      Array.prototype.forEach.call(document.querySelectorAll('[data-cur-href]'), function (a) { a.href = TABS[i].url; });
+      var shot = document.querySelector('[data-cur-img]');
+      shot.src = TABS[i].img;
+      shot.alt = TABS[i].title;
       swapN++;
       swap.className = swapN % 2 ? 'swA' : 'swB';
     });
